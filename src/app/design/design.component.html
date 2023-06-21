@@ -1,0 +1,80 @@
+<style>
+    .back{
+        background-color: white ;
+        position: absolute;
+    }
+    .calc{
+        width: 400px;
+        height: 700px;
+        background-color: black;
+        position: relative;
+        left: 500px;
+        top: 100px;
+        border-radius: 14px;
+    }
+    .input_design{
+        position: relative;
+        top: 100px;
+        font-size: 50px;
+        width: 400px;
+        color: black;
+        background-color: black;
+        padding: 10px;
+    }
+    .calc_button_operations{
+        background-color: green;
+        border: none;
+        border-radius: 50%;
+        width: 80px;
+        height: 80px;
+        font-size: 40px;
+        margin: 10px;
+    }
+    .calc_button_operations_2{
+        background-color: orange;
+        border: none;
+        border-radius: 50%;
+        width: 80px;
+        height: 80px;
+        font-size: 40px;
+        margin: 10px;
+        position: relative;
+    }
+    .calc_digits{
+        border: none;
+        width: 290px;
+        height: 287px;
+        position: relative;
+        top: 80px;
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        margin-bottom: -200px;
+    }
+    .calc_button_digits{
+        background-color: purple;
+        border: none;
+        width: 70px;
+        height: 70px;
+        font-size: 50px;
+    }
+</style>
+
+<div class="back">
+    <div class="calc">
+        <mat-form-field class="input_design">
+            <input  matInput [placeholder]="calcValue !== null ? calcValue.toString(): '' " type="number" [(ngModel)]="calcValue">   
+        </mat-form-field>
+        <button class="calc_button_operations" style="position: relative; top: 170px;" (click)="clearInput()"><span style="color: white;">AC</span></button>
+        <button class="calc_button_operations" style="position: relative; top: 170px;" (click)="percent()"><span style="color: white;">%</span></button>
+        <button class="calc_button_operations" style="position: relative; top: 170px;"><span style="color: white;">x</span></button>
+        <button class="calc_button_operations" style="position: relative; top: 170px;"><span style="color: white;">/</span></button>
+        <button class="calc_button_operations_2" style="top: 160px; left: 300px;" (click)="adding()"><span style="color: white;">+</span></button>
+        <button class="calc_button_operations_2" style="top: 260px; left: 200px;" (click)="minus()"><span style="color: white;">-</span></button>
+        <button  mat-button class="calc_button_operations_2" style="top: 360px; left: 100px;"><span style="color: white;">=</span></button>
+        <div class="calc_digits" *ngFor="let row of rows">
+            <div *ngFor="let digit of row" style="margin: 10px;">
+                <button class="calc_button_digits" (click)="numClick(digit)">{{digit}}</button>
+            </div>
+        </div>
+    </div>
+</div>
